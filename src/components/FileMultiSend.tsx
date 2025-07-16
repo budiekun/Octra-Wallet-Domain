@@ -98,11 +98,11 @@ export function FileMultiSend({ wallet, balance, nonce, onBalanceUpdate, onNonce
       // Validate address format
       if (validateAddress(address)) {
         if (!error) {
-          if (amountMode === 'same') {
+              isValid = Boolean(amount && !isNaN(Number(amount)) && Number(amount) > 0);
             isValid = true;
           } else {
             isValid = amount && !isNaN(Number(amount)) && Number(amount) > 0;
-          }
+        if (amountMode === 'different' && (amount === '' || isNaN(Number(amount)) || Number(amount) <= 0)) {
         } else {
           isValid = false;
         }
